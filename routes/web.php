@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('/datos','App\Http\Controllers\CategoriaController');
+
 Route::get('/hola', 'App\Http\Controllers\InicioController@index' );
 
 
