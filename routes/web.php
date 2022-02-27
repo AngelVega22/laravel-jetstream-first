@@ -14,15 +14,21 @@ use Illuminate\Support\Facades\View;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+// Route::get('/test', function () {
+//     $tests = ['one','two', 'three'];
+//     return view('test2')->with('tests',$tests)  ;
+// });
+// Route::resource('/datos','App\Http\Controllers\CategoriaController');
 
-Route::resource('/datos','App\Http\Controllers\CategoriaController');
+// Route::get('/hola', 'App\Http\Controllers\InicioController@index' );
 
-Route::get('/hola', 'App\Http\Controllers\InicioController@index' );
+Route::middleware(['auth:sanctum', 'verified'])->get('/dash', function () {
+    return view('dashboard.dash');
+})->name('dash');
 
 
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
